@@ -4,8 +4,13 @@ from test_framework import generic_test
 
 
 def search_first_of_k(A: List[int], k: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    import bisect
+    result =  bisect.bisect_left(A,k)
+    if result>len(A)-1:
+        return -1
+    elif A[result]==k:
+        return result
+    return -1
 
 
 if __name__ == '__main__':
