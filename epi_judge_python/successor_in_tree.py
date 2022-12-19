@@ -9,7 +9,15 @@ from test_framework.test_utils import enable_executor_hook
 
 def find_successor(node: BinaryTreeNode) -> Optional[BinaryTreeNode]:
     # TODO - you fill in here.
-    return None
+    if node.right:
+        ## That means left most in node.right
+        subtree = node.right
+        while subtree.left:
+            subtree = subtree.left
+        return subtree
+    while node.parent and node.parent.right is node:
+        node = node.parent
+    return node.parent
 
 
 @enable_executor_hook
