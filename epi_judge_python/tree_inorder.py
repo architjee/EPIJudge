@@ -6,7 +6,9 @@ from test_framework import generic_test
 
 def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
     # TODO - you fill in here.
-    return []
+    result = []
+    
+    return result
 
 
 if __name__ == '__main__':
