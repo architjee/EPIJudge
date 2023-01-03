@@ -4,12 +4,35 @@ from test_framework.test_failure import TestFailure
 
 def int_to_string(x: int) -> str:
     # TODO - you fill in here.
-    return '0'
+    is_negative = False
+    if x<0:
+        is_negative, x = True, -x
+    s = []
+    while True:
+        s.append(chr(ord('0')+x%10))
+        x//=10
+        if x==0:
+            break
+    return  ('-' if is_negative else '') + ''.join(reversed(s))
 
 
 def string_to_int(s: str) -> int:
     # TODO - you fill in here.
-    return 0
+    is_negative = False
+    
+    partial_sum = 0
+    for index, char in enumerate(s):
+        if char=='+' and index==0:
+            is_negative = False
+            continue
+        if char=='-' and index==0:
+            is_negative = True
+            continue
+        partial_sum *= 10
+        partial_sum += ord(char) - ord('0')
+    if is_negative:
+        return -partial_sum 
+    return partial_sum
 
 
 def wrapper(x, s):
